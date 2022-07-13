@@ -36,7 +36,7 @@
             }
         }
       
-        @media (min-width:412px) and (max-width:600px){
+        @media (min-width:412px) and (max-width:640px){
             #brand{
                 display: none;
             }
@@ -55,7 +55,7 @@
             }
         }
       
-        @media (min-width:600px) and (max-width:1279px){
+        @media (min-width:641px) and (max-width:1279px){
             #brand{
                 display: none;
             }
