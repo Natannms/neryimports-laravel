@@ -9,6 +9,61 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <style>
+        .menu-mobile{
+            display: none;
+        }
+        .box-image-product{
+            width: 100%;
+            height: 100%;
+        }
+        @media screen and (max-width:375px){
+            #brand{
+                display: none;
+            }
+            #menu-web{
+                display: none;
+            }
+            #logoMarca{
+                margin-left: 20%;
+            }
+            .title-destaque {
+                font-size: 15pt
+            }
+            .box-image-product{
+                width: 12rem;
+                height: 12rem;
+            }
+        }
+        @media (min-width:376px) and (max-width:1279px){
+            #brand{
+                display: none;
+            }
+            #menu-web{
+                display: block;
+            }
+            #logoMarca{
+                margin-left: 38%;
+            }
+            .title-destaque {
+                font-size: 25pt
+            }
+        }
+        @media screen and (min-width:1280px){
+            #brand{
+                display: none;
+            }
+            #menu-web{
+                display: block;
+            }
+            #logoMarca{
+                margin-left: 38%;
+            }
+            .title-destaque {
+                font-size: 35pt
+            }
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -25,8 +80,8 @@
 </head>
 <body>
     <header class="App-header flex justify-between">
-        <h1 class="brand bg-yellow-500 w-2/12 h-14 text-white font-extrabold flex justify-center items-center text-2xl" style="font-family: 'Roboto', sans-serif;">NERY IMPORTS</h1>
-        <nav class='bg-yellow-500 w-10/12 h-14'>
+        <nav id="menu-web" class='bg-yellow-500 w-screen h-14'>
+            <h1 id="brand" class="brand bg-yellow-500 w-2/12 h-14 text-white font-extrabold flex justify-center items-center text-1x1" style="font-family: 'Roboto', sans-serif;">NERY IMPORTS</h1>
             <ul class='flex justify-end pr-10 items-center mt-2'>
                 <li class='mr-10'>
                     <a href="#" class='text-white ml-2'>Home</a>
@@ -58,7 +113,7 @@
                             <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                                 <div class="flex items-center justify-between w-full md:w-auto">
                                     <div class="-mr-2 flex items-center md:hidden">
-                                        <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500" aria-expanded="false">
+                                        <button onclick="OpenMainMenu('open')" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500" aria-expanded="false">
                                             <span class="sr-only">Open main menu</span>
                                             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -79,13 +134,13 @@
 
 
                     <div class="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-                        <div class="rounded-lg shadow-md bg-black ring-1 ring-black ring-opacity-5 overflow-hidden">
+                        <div id="menu-mobile" class="menu-mobile rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div class="px-5 pt-4 flex items-center justify-between">
                                 <div>
                                     <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-yellow-600.svg" alt="" />
                                 </div>
                                 <div class="-mr-2">
-                                    <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500">
+                                    <button onclick="OpenMainMenu('close')" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500">
                                         <span class="sr-only">Close main menu</span>
                                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -109,10 +164,10 @@
 
                 <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 bg-black">
                     <div class="sm:text-center lg:text-left">
-                        <img src="{{url("storage/nery")}}/logoMarca.png" alt="" srcset="" width="200" class="mb-20 xl:ml-24">
+                        <img id="logoMarca" src="{{url("storage/nery")}}/logoMarca.png" alt="" srcset="" width="200" class="mb-20 xl:ml-24">
                         <h1 class="text-4xl tracking-tight font-extrabold text-gray-100 sm:text-5xl md:text-6xl">
-                            <span class="block xl:inline">Seu smartphone </span>
-                            <span class="block text-yellow-600 xl:inline">novo e importado</span>
+                            <span  class="myTitle block xl:inline">Seu smartphone </span>
+                            <span class="mySubTitle text-yellow-600 xl:inline">novo e importado</span>
                         </h1>
                         {{-- <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p> --}}
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
@@ -134,7 +189,7 @@
 
 
     <div class="flex flex-col items-center max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 class="text-gray-500 font-bold text-4xl mb-20 mt-20">Veja os mais vendidos da nery imports</h2>
+        <h2 class="title-destaque text-gray-500 font-bold  mb-20 mt-20">Veja os mais vendidos da nery imports</h2>
         <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8  mb-20">
             @if($categories)
                 @foreach($categories as $category)
@@ -145,8 +200,7 @@
         <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
             @foreach ($products as $item)
                 <div key={product.id} class="group flex flex-col justify-between p-4">
-                    <div class="w-50 h-50 bg-indigo-700 aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                 
+                    <div class="box-image-product bg-indigo-700 aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                         <img src="{{ url('storage/products') }}/{{ $item['imageSrc'] }}/{{  $item['imageSrc'] }}" alt="{{$item['imageAlt']}}" class="w-full h-full object-center object-cover group-hover:opacity-75" />
                     </div>
                     <h3 class="mt-4 font-bold text-xl text-gray-700 mb-10"> {{$item['name']}}</h3>
@@ -169,6 +223,19 @@
         </div>
     </div>
     <script>
+        function OpenMainMenu(param) {
+          switch (param) {
+            case "open":
+                document.getElementById("menu-mobile").style.display = "block";
+                break;
+            case "close":
+                document.getElementById("menu-mobile").style.display = "none";
+                break;
+          
+            default:
+                break;
+          }
+        }
         const totalItems = localStorage.getItem('totalItemsInCart');
         if (totalItems) {
             document.getElementById('totalItemsInCart').innerHTML = totalItems;
