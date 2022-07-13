@@ -35,7 +35,27 @@
                 height: 12rem;
             }
         }
-        @media (min-width:376px) and (max-width:1279px){
+      
+        @media (min-width:412px) and (max-width:600px){
+            #brand{
+                display: none;
+            }
+            #menu-web{
+                display: none;
+            }
+            #logoMarca{
+                margin-left: 20%;
+            }
+            .title-destaque {
+                font-size: 15pt
+            }
+            .box-image-product{
+                width: 12rem;
+                height: 12rem;
+            }
+        }
+      
+        @media (min-width:600px) and (max-width:1279px){
             #brand{
                 display: none;
             }
