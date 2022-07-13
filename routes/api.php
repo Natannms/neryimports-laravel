@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::post('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::post('/cart/prepare/{id}', CartController::class . '@createCart');
+Route::post('/websocket/received',  function(){
+    return response()->json([
+        "message"=> "Received"
+    ]);
 });
