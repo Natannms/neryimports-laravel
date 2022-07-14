@@ -174,15 +174,15 @@
         <!-- Modal body -->
         <div id="" class="modal-body">
             <div id="user-verified" class="options">
-                <h1 class="text-bold text-xl mb-10">Continuar Comprando ?</h1>
-                <a href="#" class="btn btn-primary" onclick="continueInShop('continue')">Continuar comprando</a>
-                <a id="toMycart" href="#" class="btn btn-primary" onclick="continueInShop('cart')">Ir para o Carrinho</a>
+                <h1 class="text-bold text-xl mb-10 ">Continuar Comprando ?</h1>
+                <a href="#" class="btn bg-gray-400" onclick="continueInShop('continue')">Continuar comprando</a>
+                <a id="toMycart" href="#" class="btn bg-yellow-400" onclick="continueInShop('cart')">Ir para o Carrinho</a>
             </div>
         </div>
   
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn bg-red-500 text-white" data-dismiss="modal">Fechar</button>
         </div>
       </div>
     </div>
