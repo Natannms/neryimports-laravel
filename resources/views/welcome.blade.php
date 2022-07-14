@@ -36,7 +36,7 @@
             }
         }
       
-        @media (min-width:412px) and (max-width:788px){
+        @media (min-width:412px) and (max-width:640px){
             #brand{
                 display: none;
             }
@@ -54,8 +54,45 @@
                 height: 12rem;
             }
         }
+        @media (min-width:640px) and (max-width:767px){
+            #brand{
+                display: none;
+            }
+            #menu-web{
+                display: none;
+            }
+            #logoMarca{
+                margin-left: 32%;
+            }
+            .title-destaque {
+                font-size: 15pt
+            }
+            .box-image-product{
+                width: 12rem;
+                height: 12rem;
+            }
+        }
+         @media (min-width:768px) and (max-width:799px){
+            #brand{
+                display: none;
+            }
+            #menu-web{
+                display: none;
+            }
+            #logoMarca{
+                margin-left: 35%;
+            }
+            .title-destaque {
+                font-size: 15pt
+                color: tomato;
+            }
+            .box-image-product{
+                width: 25rem;
+                height: 25rem;
+            }
+        } 
       
-        @media (min-width:789px) and (max-width:1279px){
+         @media (min-width:800px) and (max-width:1279px){
             #brand{
                 display: none;
             }
@@ -69,7 +106,8 @@
                 font-size: 25pt
             }
         }
-        @media screen and (min-width:1280px){
+        
+        @media (min-width:1280px) and (max-width:6000px){
             #brand{
                 display: none;
             }
@@ -77,7 +115,7 @@
                 display: block;
             }
             #logoMarca{
-                margin-left: 38%;
+                margin-left: 20%;
             }
             .title-destaque {
                 font-size: 35pt
