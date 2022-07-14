@@ -55,7 +55,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        //validate request
+        // validate request
         // $request->validate([
         //     'name' => 'required',
         //     'price' => 'required',
@@ -65,7 +65,15 @@ class ProductController extends Controller
         //     'quantity' => 'required',
         // ]);
         
-        
+        // $price = strpos($request->price, '.');
+        //remove  first '.' from $request->price
+        $price = str_replace('.', '', $request->price); 
+        // replace ',' by '.'
+        $price = str_replace(',', '.', $price);
+        //convert string to float
+        $price = (float)$price;
+
+        // return $request->price[$price];
         //save image in storage/products
         // Define o valor default para a variável que contém o nome da imagem 
         $nameFile = null;
@@ -96,7 +104,7 @@ class ProductController extends Controller
                 //save product to database
                 $product = new Product();
                 $product->name = $request->name;
-                $product->price = $request->price;
+                $product->price =   $price;
                 $product->category_id = $request->category_id;
                 $product->short_description = $request->short_description;
                 $product->long_description = $request->long_description;

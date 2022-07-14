@@ -121,7 +121,8 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->price }}</td>
+                                        {{-- price in monetary format --}}
+                                        <td>{{ number_format($product->price, 2, ',', '.') }}</td>
                                         <td> <img
                                                 src="{{ url('storage/products') }}/{{ $product->image }}/{{ $product->image }}"
                                                 width="70"></td>
@@ -247,7 +248,7 @@
                                 <span class="label-text">Descrição longa</span>
                             </label>
                             <label class="input-group">
-                                <textarea name="long_description" class="textarea textarea-primary" cols=40" placeholder="Bio"></textarea>
+                                <textarea name="long_description" class="textarea textarea-primary" cols=40" placeholder="Bio" required></textarea>
                             </label>
                         </div>
                         <div class="form-control">
