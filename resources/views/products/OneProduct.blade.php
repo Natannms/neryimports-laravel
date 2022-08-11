@@ -33,7 +33,7 @@
 </head>
 <body>
     <div class="">
-        <div class="bg-white">           
+        <div class="bg-white">
             <div class="pt-6">
                 <nav aria-label="Breadcrumb">
                     <ol role="list" class="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -78,10 +78,12 @@
                         <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{{$product['name']}}</h1>
                     </div>
 
-                    <div class="mt-4 lg:mt-0 lg:row-span-3">    
+                    <div class="mt-4 lg:mt-0 lg:row-span-3">
                         <h2 class="sr-only">Product information</h2>
                         <p class="text-3xl text-gray-900">$ {{$product['price']}}</p>
-
+                        @if ($product['installments'] > 1)
+                            <p class="text-1xl text-gray-900">Em até {{$product['installments']}}x no cartão</p>
+                        @endif
                         <div class="mt-6">
                             <h3 class="sr-only">Reviews</h3>
                             <div class="flex items-center">
@@ -96,9 +98,9 @@
                                         </li>
                                     </ul>
                                 </div>
-                               
+
                             </div>
-                            
+
                             <div id="quantityInput">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0">
@@ -164,13 +166,13 @@
 <div class="modal" id="toBag">
     <div class="modal-dialog">
       <div class="modal-content">
-  
+
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Minhas compras</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-  
+
         <!-- Modal body -->
         <div id="" class="modal-body">
             <div id="user-verified" class="options">
@@ -179,7 +181,7 @@
                 <a id="toMycart" href="#" class="btn bg-yellow-400" onclick="continueInShop('cart')">Ir para o Carrinho</a>
             </div>
         </div>
-  
+
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn bg-red-500 text-white" data-dismiss="modal">Fechar</button>
@@ -189,7 +191,7 @@
   </div>
   <script>
     const addToBagForm = document.getElementById('addToBagForm');
-   
+
     function continueInShop(option) {
         document.getElementById('continueInShop').value = option;
         let selectedQtd = document.getElementById('selectedQtd').value;

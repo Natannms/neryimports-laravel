@@ -22,5 +22,6 @@ class Product extends Model
         'imageAlt',
         'href',
         'brand',
+        'installments'
     ];
 }

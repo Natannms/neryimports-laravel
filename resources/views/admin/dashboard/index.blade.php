@@ -90,7 +90,7 @@
             </div>
             <div class="row bg-base-300 w-11/12">
                 {{-- alert de erro ao inserir novo produto --}}
-                
+
                 <div id="menu-actions" class="col-md-12 flex flex-col ">
                     <div class="flex flex-row justify-between">
                         <button class="btn primary" onclick="view('section-addProduct')">Novo produto</button>
@@ -107,6 +107,7 @@
                                     <th>#</th>
                                     <th>Nome</th>
                                     <th>Preço</th>
+                                    <th>Parcela</th>
                                     <th>Imagem</th>
                                     <th>Categoria</th>
                                     <th>Detalhes</th>
@@ -121,6 +122,7 @@
                                     <tr>
                                         <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
+                                        <td><span class="text-yellow-400">Até</span> {{ $product->installments }}x</td>
                                         {{-- price in monetary format --}}
                                         <td>{{ number_format($product->price, 2, ',', '.') }}</td>
                                         <td> <img
@@ -182,6 +184,15 @@
                             </label>
                             <label class="input-group">
                                 <input required type="text" name="price" placeholder="1045.50"
+                                    class="input input-bordered w-80" />
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Parcelado em até:</span>
+                            </label>
+                            <label class="input-group">
+                                <input type="number" name="installments" placeholder="1"
                                     class="input input-bordered w-80" />
                             </label>
                         </div>

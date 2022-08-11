@@ -55,45 +55,33 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        // validate request
-        // $request->validate([
-        //     'name' => 'required',
-        //     'price' => 'required',
-        //     'description' => 'required',
-        //     'image' => 'required',
-        //     'category' => 'required',
-        //     'quantity' => 'required',
-        // ]);
-        
-        // $price = strpos($request->price, '.');
         //remove  first '.' from $request->price
-        $price = str_replace('.', '', $request->price); 
+        $price = str_replace('.', '', $request->price);
         // replace ',' by '.'
         $price = str_replace(',', '.', $price);
         //convert string to float
         $price = (float)$price;
 
-        // return $request->price[$price];
         //save image in storage/products
-        // Define o valor default para a variável que contém o nome da imagem 
+        // Define o valor default para a variável que contém o nome da imagem
         $nameFile = null;
-        
+
         // Verifica se informou o arquivo e se é válido
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            
+
             // Define um aleatório para o arquivo baseado no timestamps atual
             $name = uniqid(date('HisYmd'));
-            
+
             // Recupera a extensão do arquivo
             $extension = $request->image->extension();
-            
+
             // Define finalmente o nome
             $nameFile = "{$name}.{$extension}";
-            
+
             // Faz o upload:
             $upload = $request->image->storeAs('public/products/'.$nameFile, $nameFile);
             // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
-            
+
             // Verifica se NÃO deu certo o upload (Redireciona de volta)
             if (!$upload){
                 return redirect()
@@ -114,8 +102,9 @@ class ProductController extends Controller
                 $product->href = $nameFile;
                 $product->brand = $request->brand;
                 $product->image = $nameFile;
+                $product->installments = (int)$request->installments;
                 $product->save();
-                
+
                 if (!$product) {
                     return redirect()
                     ->back()

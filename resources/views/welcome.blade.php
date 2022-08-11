@@ -35,7 +35,7 @@
                 height: 12rem;
             }
         }
-      
+
         @media (min-width:412px) and (max-width:640px){
             #brand{
                 display: none;
@@ -90,8 +90,8 @@
                 width: 25rem;
                 height: 25rem;
             }
-        } 
-      
+        }
+
          @media (min-width:800px) and (max-width:1279px){
             #brand{
                 display: none;
@@ -106,7 +106,7 @@
                 font-size: 25pt
             }
         }
-        
+
         @media (min-width:1280px) and (max-width:6000px){
             #brand{
                 display: none;
@@ -132,7 +132,6 @@
                 }
             }
         }
-
     </script>
     <title>Nery Imports</title>
 </head>
@@ -153,7 +152,7 @@
                     @if(session()->has('cartQuantity'))
                         <sub><strong id="">{{session()->get('cartQuantity')}}</strong></sub>
                     @endif
-                        
+
                 </li>
             </ul>
         </nav>
@@ -164,7 +163,6 @@
                 <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-black transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                     <polygon points="50,0 100,0 50,100 0,100" />
                 </svg>
-
                 <div>
                     <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
                         <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
@@ -189,8 +187,6 @@
                             </div>
                         </nav>
                     </div>
-
-
                     <div class="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
                         <div id="menu-mobile" class="menu-mobile rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                             <div class="px-5 pt-4 flex items-center justify-between">
@@ -219,7 +215,6 @@
                         </div>
                     </div>
                 </div>
-
                 <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 bg-black">
                     <div class="sm:text-center lg:text-left">
                         <img id="logoMarca" src="{{url("storage/nery")}}/logoMarca.png" alt="" srcset="" width="200" class="mb-20 xl:ml-24">
@@ -244,8 +239,6 @@
             <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="https://images.unsplash.com/photo-1598327105740-820e04db502e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt="" />
         </div>
     </div>
-
-
     <div class="flex flex-col items-center max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 class="title-destaque text-gray-500 font-bold  mb-20 mt-20">Veja os mais vendidos da nery imports</h2>
         <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8  mb-20">
@@ -273,6 +266,9 @@
                         </li>
                     </ul>
                     <p class="mt-1 mb-10 text-xl font-medium text-gray-900">R$ {{ number_format($item['price'],2,",",".")}}</p>
+                    @if ($item->installments > 1)
+                        <p class="mt-1 mb-10 text-xl font-medium text-gray-900"><span class="text-yellow-400">Até</span> {{ $item->installments }}x no cartão</p>
+                    @endif
                     <div class="mt-3 sm:mt-0 sm:ml-3">
                     <a href="/products/{{$item['id']}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white hover:text-black bg-yellow-700 hover:bg-yellow-200 md:py-4 md:text-lg md:px-10">Ver mais</a>
                     </div>
@@ -289,7 +285,7 @@
             case "close":
                 document.getElementById("menu-mobile").style.display = "none";
                 break;
-          
+
             default:
                 break;
           }

@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('imageAlt');
             $table->string('href');
             $table->string('brand');
+            $table->bigInteger('installments');
             $table->timestamps();
         });
     }
