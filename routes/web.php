@@ -23,7 +23,7 @@ Route::get('/response', Controller::class . '@response')->name('finally_code');
 Route::get('/products/{id}', ProductController::class . '@show');
 Route::post('/products/add/{id}', CartController::class . '@prepareBag');
 Route::post('/cart', CartController::class . '@store');
-Route::post('/finally', CartController::class . '@finally')->name('finally');   
+Route::post('/finally', CartController::class . '@finally')->name('finally');
 Route::get('/mycart', CartController::class . '@toCart')->name('mycart');
 Route::get('/nery/client/{id}', Controller::class . '@neryShow')->name('neryShow');
 Route::post('/addToCart', CartController::class . '@createCart')->name('addToCart');

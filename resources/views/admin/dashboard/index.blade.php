@@ -129,10 +129,13 @@
                                                 src="{{ url('storage/products') }}/{{ $product->image }}/{{ $product->image }}"
                                                 width="70"></td>
                                         <td>
-                                            <a onclick="viewCategory({{ $product->category_id }})"
-                                                class="btn btn-primary">Editar</a>
+                                            @foreach ($categories as $category)
+                                                @if ($category->id == $product->category_id)
+                                                    {{ $category->name }}
+                                                @endif
+                                            @endforeach
                                         </td>
-                                        <td><a href="/products/{{ $product->id }}">Ver</a></td>
+                                        <td><a class="btn btn-primary" href="/products/{{ $product->id }}">Ver</a></td>
                                         <td>
                                             @for ($i = 0; $i < $product->rate; $i++)
                                                 <span class="material-symbols-outlined">
@@ -142,7 +145,7 @@
                                         </td>
                                         <td>{{ $product->brand }}</td>
                                         <td>
-                                            <a href="/administerNery/product/update/{{ $product->id }}"
+                                            <a href="/administerNery/product/edit/{{ $product->id }}"
                                                 class="btn btn-primary">Editar</a>
                                             <a href="/administerNery/product/delete/{{ $product->id }}"
                                                 class="btn bg-red-700">Deletar</a>

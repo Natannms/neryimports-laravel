@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -139,7 +140,19 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::query()
+            ->select('products.*', 'categories.name as category_name')
+            ->where('products.id', $id)
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->first();
+        ;
+        $categories = Category::all();
+
+        $result = [
+            'product' => $product,
+            'categories' => $categories
+        ];
+        return view('admin.dashboard.products.edit', compact('result'));
     }
 
     /**
@@ -151,7 +164,70 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+          //remove  first '.' from $request->price
+          $price = str_replace('.', '', $request->price);
+          // replace ',' by '.'
+          $price = str_replace(',', '.', $price);
+          //convert string to float
+          $price = (float)$price;
+
+          //save image in storage/products
+          // Define o valor default para a variável que contém o nome da imagem
+          $nameFile = null;
+
+          // Verifica se informou o arquivo e se é válido
+          if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+              // Define um aleatório para o arquivo baseado no timestamps atual
+              $name = uniqid(date('HisYmd'));
+
+              // Recupera a extensão do arquivo
+              $extension = $request->image->extension();
+
+              // Define finalmente o nome
+              $nameFile = "{$name}.{$extension}";
+
+              // Faz o upload:
+              $upload = $request->image->storeAs('public/products/'.$nameFile, $nameFile);
+              // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
+
+              // Verifica se NÃO deu certo o upload (Redireciona de volta)
+              if (!$upload){
+                  return redirect()
+                  ->back()
+                  ->with('error', 'Falha ao fazer upload')
+                  ->withInput();
+              }else{
+                $product = Product::find($id);
+                //update product
+                $product->update([
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'category_id' => $request->category_id,
+                    'short_description' => $request->short_description,
+                    'long_description' => $request->long_description,
+                    'rate' => $request->rate,
+                    'imageSrc' => $nameFile,
+                    'imageAlt' => $nameFile,
+                    'href' => 'undefined',
+                    'brand' => $request->brand,
+                    'image' => $nameFile,
+                    'installments' => $request->installments
+                ]);
+
+                if (!$product) {
+                    return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao salvar produto')
+                    ->withInput();
+                } else {
+                    return redirect()
+                    ->back()
+                    ->with('success', 'Produto salvo com sucesso');
+                }
+              }
+
+            }
     }
 
     /**
